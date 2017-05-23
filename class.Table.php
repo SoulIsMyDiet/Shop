@@ -1,19 +1,31 @@
 <?php
 include_once 'class.Db.php';
 class Table extends Db{
-private $_howMany;
+public $_howMany;
 public function __construct($dbo=NULL, $howmany=3){
                 parent::__construct($dbo);
 		$this->_howMany = $howmany;
 }
-
-
-public function createTable(){
-$row = "<tr>\n<td>".$obj[$i] = new Product($beer['name'], $beer['price'], $_SESSION['val'])."\n</td>\n</tr>";
+public function createObjects(){
 $beers = $this->_table();
+$obj = [];
 for($i = 0; $i < $this->_howMany; $i++)
 {
 $beer = $beers[$i];
+print_r($beer);
+$obj[$i] = new Product($beer['Name'], $beer['Price'], $_SESSION["val$i"]);
+//$objArray[$i] = $obj[$i];
+}
+return $obj;
+}
+
+public function createTable(){
+$object = $this->createObjects();
+$rows = '';
+for($i = 0; $i < $this->_howMany; $i++)
+{
+//$beer = $beers[$i];
+$row = "<tr>\n<td>".$object[$i]->showProd($i)."\n</td>\n</tr>";
 $rows.=$row;
 }
 $html = "<table>".$rows."</table>";
