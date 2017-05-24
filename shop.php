@@ -25,7 +25,7 @@ if(!isset($_SESSION["val$j"])) $_SESSION["val$j"]=0;
 <head>
 <link rel="stylesheet" href="style.css" type="text/css">
 <script src="jquery.min.js"></script>
-<script type="text/javascript" src="index.js"></script><!-- this line doesn't work-->
+<script type="text/javascript" src="index.js"></script>
 </head>
 
 <body>

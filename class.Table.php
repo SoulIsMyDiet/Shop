@@ -29,8 +29,8 @@ $row = "<tr>\n<td>".$object[$i]->showProd($i)."\n</td>\n</tr>";
 $rows.=$row;
 }
 $html = "<table>".$rows."</table>";
-
-return $html;
+$link = "<a href='basket.php'>Wejdź w koszyk</a>";
+return $html.$link;
 }
 
 public function _table (){
@@ -48,5 +48,58 @@ catch(Exception $e)
 die($e->Message());
 }
 
+}
+public function reduceObjects(){
+$bigarray = $this->createObjects();
+var_dump($bigarray);
+echo "</br>";
+var_dump($_SESSION);
+echo "</br>";
+$pointer = $_SESSION;
+echo "</br>";
+var_dump($pointer);
+echo "</br>";
+function reduce($pointer, $bigarray){
+if($pointer > 0) return $bigarray;
+}
+$smallarray = array_map("reduce", $pointer, $bigarray);
+var_dump($smallarray);
+echo "</br>";
+
+$smallarray = array_filter($smallarray, function($obj){
+return ($obj != NULL);
+});
+var_dump($smallarray);
+echo "</br>";
+return $smallarray;
+}
+public function createBasket(){
+$object = $this->reduceObjects();
+var_dump($object);
+$rows = '';
+foreach($object as $key => $obj)
+{
+//$beer = $beers[$i];
+$row = "<tr>\n<td>".$obj->showProdInBasket($key)."\n</td>\n</tr>";
+$rows.=$row;
+}
+$html = "<table>".$rows."</table>";
+return $html;
+}
+public function processActual(){
+echo "wykonuje sie";
+for($i=0; $i<$this->_howMany; $i++)
+{
+if (isset($_POST["val$i"]))
+$_SESSION["val$i"] = $_POST["val$i"];
+}
+}
+public function processDelete(){
+for($i=0; $i<$this->_howMany; $i++)
+{
+if (isset($_POST["del$i"]))
+$_SESSION["val$i"] = 0;
+
+}
 }
 }

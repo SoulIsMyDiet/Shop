@@ -1,8 +1,23 @@
 .minus
 {
 background-color: blue;
+float: left;
+
+}
+.minus:hover
+{
+cursor: pointer;
 }
 .plus
 {
 background-color: red;
+width: 40px;
+}
+.plus:hover
+{
+cursor: pointer;
+}
+tr td
+{
+border: 2px solid black;
 }
