@@ -1,7 +1,7 @@
 <?php
 class Table extends Db{
 public $howMany;//this is the number of the products to sale
-public function __construct($dbo=NULL, $howmany=3){
+public function __construct($dbo=NULL, $howmany=5){
                 parent::__construct($dbo);
 		$this->howMany = $howmany;
 }

@@ -1,5 +1,6 @@
 <?php
 include_once '../sys/init.php';
+$js_file = 'index.js';
 $page_title = "Kup se pare piwek";
 $tab = new Table($dbo);
 
