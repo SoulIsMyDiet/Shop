@@ -4,31 +4,33 @@ class Product{
 private $_name;
 private $_price;
 private $_quantInBasket;
+private $_priceOfProd;
 
-public function __construct($name, $price, $quant){
+public function __construct($name, $price, $quant){ 
 $this->_name = $name;
 $this->_price = $price;
 $this->_quantInBasket = $quant;
+$this->_priceOfProd = $price*$quant;
 }
-public function showProd($i){
+public function showProd($i){ //the html code for each product in table row in main shop page
 return <<<PROD
 <h3>$this->_name</h3>
-<p>Cena: $this->_price</p>
+<p>Cena: $this->_price golda</p>
 <form action="process.php" method="post">
 <input type="hidden" name="action" value="change" />
 <input type="hidden" name="ses" value="$this->_quantInBasket" />
 <input type="text" name="val$i" value="$this->_quantInBasket" />
 <input type="submit" name="basket" value="Zaktualizuj kosz" disabled />
-<div class="plus">plus</div>
-<div class="minus">minus</div>
+<div class="plus">+</div>
+<div class="minus">-</div>
 </form>
 PROD;
 }
-public function showProdInBasket($i){
+public function showProdInBasket($i){ //the html code for each product in table row in basket
 return <<<PROD
 <h3>$this->_name</h3>
-<p>Cena sztuki: $this->_price</p>
-<p>Cena łaczna: ($this->_price*$this->_quantInBasket)</p>
+<p>Cena sztuki: $this->_price sztuk złota</p>
+<p>Łaczna cena: $this->_priceOfProd sztuk złota</p>
 <form action="process.php" method="post">
 <input type="hidden" name="action" value="delete" />
 <input type="text" readonly="readonly" name="del$i" value="$this->_quantInBasket" />
@@ -36,5 +38,6 @@ return <<<PROD
 </form>
 PROD;
 }
+
 };
 
