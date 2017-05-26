@@ -43,7 +43,11 @@ if ($_POST['action']!='change') //if for some reason someone wil get to the proc
 for($i=0; $i<$this->howMany; $i++) //dependly on "how many" products we have inshop we gonna check that many prod to check which product someone just bought
 {
 if (isset($_POST["val$i"])) //the product which was soled have the right "$_POST" set ...
-$_SESSION["val$i"] = $_POST["val$i"]; //and then we change the apropriate session value
+{
+$val = $_POST["val$i"];
+$val = preg_replace('/[^0-9]/', '', $val);
+$_SESSION["val$i"] = $val; //and then we change the apropriate session value
+}
 }
 return TRUE;
 }
